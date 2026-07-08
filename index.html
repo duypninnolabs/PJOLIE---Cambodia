@@ -1256,9 +1256,12 @@
             <option>ចិញ្ចើមមិនស្មើ</option>
             <option>ចង់បានទម្រង់ថ្មី</option>
           </select><input type="text" id="city" placeholder="ទីក្រុង / តំបន់" /><textarea id="message"
-            placeholder="សារបន្ថែម"></textarea><button class="btn" type="submit">ផ្ញើព័ត៌មានទៅ PJOLIE</button></form>
+            placeholder="សារបន្ថែម"></textarea><button class="btn" type="submit">ផ្ញើព័ត៌មានទៅ PJOLIE</button>
+          <p id="formMessage" style="margin-top:15px;color:red;text-align:center;font-weight:600;"></p>
+          </form>
       </div>
     </section>
+    
   </main>
   <footer>
     <div class="wrap">© PJOLIE Cambodia · Hairstrokes Natural Brows · Before/After proof · Hotline / Inbox: update by IT
@@ -1336,21 +1339,21 @@ document.getElementById("pjolieForm")
 
     .then(result => {
 
-        if(result.success){
+    if(result.success){
 
-            alert("ព័ត៌មានរបស់អ្នកត្រូវបានផ្ញើរួចរាល់!");
+        formMessage.style.color = "green";
+        formMessage.textContent = "ព័ត៌មានរបស់អ្នកត្រូវបានផ្ញើរួចរាល់!";
 
-            document.getElementById("pjolieForm").reset();
+        document.getElementById("pjolieForm").reset();
 
-        }
+    } else {
 
-        else{
+        formMessage.style.color = "red";
+        formMessage.textContent = result.message || "មានបញ្ហាក្នុងការផ្ញើព័ត៌មាន";
 
-            alert("មានបញ្ហា: " + result.message);
+    }
 
-        }
-
-    })
+})
 
 
     .catch(error => {
