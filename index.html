@@ -1442,17 +1442,26 @@
     </div>
   </footer>
   <script>
-document.addEventListener("touchstart", function(){
-    const video = document.getElementById("khmerVideo");
-    video.play();
-}, {once:true});
 
     const video = document.getElementById("khmerVideo");
     const playButton = document.getElementById("playButton");
 
 video.muted = true;
+    video.autoplay = true;
 video.playsInline = true;
 
+document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) {
+        video.play().catch(() => {});
+    }
+});
+
+window.onload = function () {
+    video.play().catch(() => {
+        console.log("Zalo block autoplay");
+    });
+};
+    
 window.addEventListener("load", () => {
     video.play().catch(() => {
         console.log("iOS blocked autoplay");
