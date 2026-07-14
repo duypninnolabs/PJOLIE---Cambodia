@@ -1442,6 +1442,10 @@
     </div>
   </footer>
   <script>
+document.addEventListener("touchstart", function(){
+    const video = document.getElementById("khmerVideo");
+    video.play();
+}, {once:true});
 
     const video = document.getElementById("khmerVideo");
     const playButton = document.getElementById("playButton");
