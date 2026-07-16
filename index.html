@@ -818,12 +818,14 @@ ul li{
 }
 
     .proofPills {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: 26px 0 0;
-    }
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 26px auto 0; /* Auto ở 2 bên sẽ căn giữa chính khối .proofPills */
+    
+    justify-items: center; /* Căn giữa các item theo chiều ngang */
+    align-items: center;   /* Căn giữa các item theo chiều dọc */
+}
 
     .proofPills span {
       border: 1px solid rgba(200, 148, 47, .28);
@@ -1177,7 +1179,7 @@ margin-top: 20px !important;
   box-shadow: 0 10px 22px rgba(168, 100, 13, .22);
 }
     .khmer-video-section {
-      padding: 80px 20px;
+      padding: 40px 20px;
       background: #fffaf5;
       font-family: Arial, sans-serif;
     }
@@ -1604,9 +1606,7 @@ margin-top: 20px !important;
                 និងទាក់ទាញជាងមុន។</span></div>
           </article>
         </div>
-        <div class="proofPills"><span>Before / After
-            ពិត</span><span>រចនាតាមទម្រង់មុខ</span><span>សរសៃមើលធម្មជាតិ</span><span>សមរម្យសម្រាប់ប្រើប្រាស់ប្រចាំថ្ងៃ</span>
-        </div>
+
         <div class="miniNote">*លទ្ធផលអាចខុសគ្នាតាមសភាពចិញ្ចើម ស្បែក និងការថែរក្សាបន្ទាប់ពីធ្វើរបស់មនុស្សនីមួយៗ។</div>
       </div>
     </section>
