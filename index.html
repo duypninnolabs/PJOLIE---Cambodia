@@ -139,21 +139,6 @@
       box-shadow: none
     }
 
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 70px 0 46px
-    }
-
-    .hero:before {
-      content: "";
-      position: absolute;
-      inset: -20% -10% auto auto;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(216, 165, 64, .26), transparent 66%);
-      pointer-events: none
-    }
 
     .grid {
       display: grid;
@@ -161,81 +146,231 @@
       gap: 48px;
       align-items: center
     }
+ .hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 680px;
+  padding: 90px 0 70px;
+  background-image: url("nhanvien.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 35%;
+  isolation: isolate;
+}
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 9px 14px;
-      border: 1px solid rgba(200, 148, 47, .28);
-      background: rgba(255, 255, 255, .62);
-      border-radius: 999px;
-      color: var(--gold-dark);
-      font-weight: 800;
-      font-size: 14px
-    }
+/* Lớp phủ giúp chữ rõ hơn */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(20, 14, 8, 0.82) 0%,
+      rgba(27, 18, 9, 0.66) 45%,
+      rgba(24, 16, 9, 0.32) 72%,
+      rgba(20, 13, 8, 0.2) 100%
+    );
+}
 
-    
-    h1 {
-      font-size: 30px;
-      line-height: 1.05;
-      margin: 22px 0 18px;
-      letter-spacing: -1.5px
-    }
+/* Ánh sáng vàng nhẹ */
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -250px;
+  left: -200px;
+  width: 760px;
+  height: 760px;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    rgba(198, 146, 62, 0.22) 0%,
+    rgba(198, 146, 62, 0.08) 38%,
+    transparent 70%
+  );
+}
 
-    .gold {
-      color: var(--gold-dark)
-    }
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 680px) 1fr;
+  align-items: center;
+}
 
-    .lead {
-      font-size: 15px;
-      line-height: 1.75;
-      color: #64442f;
-      max-width: 650px;
-      margin-bottom: 28px
-    }
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+}
 
-    .heroActions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin: 28px 0
-    }
+/* Badge gọn hơn */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  max-width: 100%;
+  padding: 9px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(12px);
+  color: #9b6418;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 800;
+}
 
-   .trust {
+.badge-dot {
+  opacity: 0.55;
+}
+
+/* Headline */
+.hero h1 {
+  max-width: 650px;
+  margin: 24px 0 18px;
+  font-size:30px;
+  color: #ffffff;
+  line-height: 1.12;
+  letter-spacing: -1.2px;
+  text-shadow: 0 5px 24px rgba(0, 0, 0, 0.35);
+}
+
+.hero-price {
+  display: block;
+  margin-top: 8px;
+  color: #e0ad4f;
+  font-size: 1.08em;
+  font-weight: 900;
+  text-shadow:
+    0 4px 22px rgba(0, 0, 0, 0.28),
+    0 0 30px rgba(224, 173, 79, 0.18);
+}
+
+/* Mô tả */
+.lead {
+  max-width: 590px;
+  margin: 0 0 28px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+  line-height: 1.8;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* CTA */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 0 0 32px;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.hero-btn:hover {
+  transform: translateY(-2px);
+}
+
+.hero-btn.primary {
+  border: 1px solid #d59d3c;
+  background: linear-gradient(135deg, #d9a33e, #b97617);
+  color: #ffffff;
+  width: 100%;
+  box-shadow:
+    0 14px 32px rgba(166, 102, 20, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.hero-btn.primary:hover {
+  box-shadow:
+    0 18px 38px rgba(166, 102, 20, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.hero-btn.secondary {
+    width: 100%;
+
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+}
+
+.hero-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* 3 card đồng đều */
+.trust {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
-  margin-top: 28px;
   width: 100%;
 }
 
-/* Thẻ thứ 3 full width */
-.trust > div:nth-child(3) {
+/* Card thứ 3 xuống hàng và full width */
+.trust .trust-card:nth-child(3) {
   grid-column: 1 / -1;
 }
-.trust > div {
+
+.trust-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   min-width: 0;
-  box-sizing: border-box;
+  padding: 16px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.13);
+  backdrop-filter: blur(14px);
 }
-    .trust div {
-      background: rgba(255, 255, 255, .72);
-      border: 1px solid rgba(200, 148, 47, .18);
-      border-radius: 18px;
-      padding: 16px;
-      box-shadow: 0 12px 30px rgba(89, 52, 11, .06)
-    }
 
-    .trust b {
-      display: block;
-      font-size: 24px;
-      color: var(--gold-dark)
-    }
+.trust-icon {
+  display: flex;
+  flex: 0 0 38px;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(198, 146, 62, 0.13);
+  color: #b5761e;
+  font-size: 18px;
+}
 
-    .trust span {
-      font-size: 13px;
-      color: var(--muted)
-    }
+.trust-card b {
+  display: block;
+  margin-bottom: 3px;
+  color: #a66816;
+  font-size: 21px;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.trust-card span {
+  display: block;
+  color: #675e54;
+  font-size: 12px;
+  line-height: 1.45;
+}
 
     .photoCard {
       position: relative;
@@ -765,7 +900,6 @@ ul li{
   overflow-x: scroll;
   overflow-y: hidden;
   padding: 4px 16px 16px;
-  margin: 0 -16px;
 
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -806,8 +940,9 @@ ul li{
 .resultCard img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  
   object-fit: cover;
+  height: 250px;
 }
 
 .resultCaption {
@@ -918,7 +1053,7 @@ ul li{
 .trustPhotoStack img {
   width: 100%;
   
-  height: 100%;
+  height: 300px;
   display: block;
 
   border-radius: 18px;
@@ -1179,7 +1314,7 @@ margin-top: 20px !important;
   box-shadow: 0 10px 22px rgba(168, 100, 13, .22);
 }
     .khmer-video-section {
-      padding: 40px 20px;
+      padding: 30px 20px;
       background: #fffaf5;
       font-family: Arial, sans-serif;
     }
@@ -1231,6 +1366,7 @@ margin-top: 20px !important;
       color: #292929;
 
       margin-bottom: 20px;
+      text-align: center;
 
     }
 
@@ -1244,6 +1380,7 @@ margin-top: 20px !important;
       color: #666;
 
       margin-bottom: 35px;
+      text-align: center;
 
     }
 
@@ -1333,7 +1470,7 @@ margin-top: 20px !important;
     }
 
     .feedback-section{
-    padding:40px 20px;
+    padding:30px 20px;
     background: linear-gradient(180deg, #fff7ed, #f0d4a9);
     border-top: 1px solid rgba(200, 148, 47, .16);
 }
@@ -1403,17 +1540,13 @@ margin-top: 20px !important;
 
     overflow: hidden;
     border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
     transition: .35s;
     background: #fff;
 
     scroll-snap-align: start;
 }
 
-.feedback-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, .18);
-}
+
 
 .feedback-item img {
     width: 100%;
@@ -1422,9 +1555,7 @@ margin-top: 20px !important;
     transition: .4s;
 }
 
-.feedback-item:hover img {
-    transform: scale(1.05);
-}
+
 
 .feedback-bottom {
     margin-top: 45px;
@@ -1475,9 +1606,7 @@ margin-top: 20px !important;
     .heroActions{
       width: 100%;
     }
-    .btn{
-      width: 100%;
-    }
+  
   }
 
   </style>
@@ -1505,27 +1634,69 @@ margin-top: 20px !important;
     </div>
   </header>
   <main id="top">
-    <section class="hero">
-      <div class="wrap grid">
-        <div>
-          <div class="badge">✨ Hairstrokes Natural Brows · តម្លៃពិសេសសម្រាប់ Cambodia</div>
-          <h1>ចិញ្ចើមស្អាតធម្មជាតិ <span class="gold">ត្រឹម 79$</span></h1>
-          <p class="lead">មិនចាំបាច់គូរចិញ្ចើមរាល់ថ្ងៃ។ PJOLIE ជួយរចនាទម្រង់ចិញ្ចើមឱ្យសមនឹងមុខ ដោយបច្ចេកទេស Hairstrokes
-            បែបសរសៃធម្មជាតិ មើលស្រាល ស្អាត និងមានភាពទំនុកចិត្តជាងមុន។</p>
-          <div class="heroActions"><a class="btn" href="#register">ទទួលយកតម្លៃ 79$ ឥឡូវនេះ</a><a class="btn secondary"
-              href="#benefit">មើលអត្ថប្រយោជន៍</a></div>
-          <div class="trust">
-            <div><b>79$</b><span>តម្លៃពិសេស</span></div>
-            <div><b>30 នាទី</b><span>ពិគ្រោះទម្រង់មុខ</span></div>
-            <div><b>Natural</b><span>ស្អាតដូចធម្មជាតិ</span></div>
+  <section class="hero">
+  <div class="hero-overlay"></div>
+
+  <div class="wrap hero-grid">
+    <div class="hero-content">
+
+      <div class="badge">
+        <span>✨</span>
+        <!-- <span>Hairstrokes Natural Brows</span> -->
+        <!-- <span class="badge-dot">•</span> -->
+        <span>តម្លៃពិសេសសម្រាប់ Cambodia</span>
+      </div>
+
+      <h1>
+        ចិញ្ចើមស្អាតបែបធម្មជាតិ
+        <span class="hero-price">ត្រឹម 79$</span>
+      </h1>
+
+      <p class="lead">
+        មិនចាំបាច់គូរចិញ្ចើមរាល់ថ្ងៃ។ PJOLIE ជួយរចនាទម្រង់ចិញ្ចើម
+        ឱ្យសមនឹងមុខ ដោយបច្ចេកទេស Hairstrokes បែបសរសៃធម្មជាតិ
+        មើលស្រាល ស្អាត និងទាក់ទាញ។
+      </p>
+
+      <div class="hero-actions">
+        <a class="hero-btn primary" href="#register">
+          ទទួលយកតម្លៃ 79$ ឥឡូវនេះ
+        </a>
+
+        <a class="hero-btn secondary" href="#benefit">
+          មើលអត្ថប្រយោជន៍
+        </a>
+      </div>
+
+      <div class="trust">
+        <div class="trust-card">
+          <div class="trust-icon">✦</div>
+          <div>
+            <b>79$</b>
+            <span>តម្លៃពិសេស</span>
           </div>
         </div>
-        <div class="photoCard">
-          <img src="hinh5.jpg" alt="">
-          <div class="priceFloat"><small>Special Offer</small><strong>79$</strong></div>
+
+        <div class="trust-card">
+          <div class="trust-icon">◷</div>
+          <div>
+            <b>30 នាទី</b>
+            <span>ពិគ្រោះទម្រង់មុខ</span>
+          </div>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon">❧</div>
+          <div>
+            <b>Natural</b>
+            <span>ស្អាតដូចធម្មជាតិ</span>
+          </div>
         </div>
       </div>
-    </section>
+
+    </div>
+  </div>
+</section>
     <section id="benefit">
       <div class="wrap">
         <div class="sectionTitle">
@@ -1640,11 +1811,13 @@ margin-top: 20px !important;
                   ដើម្បីជ្រើសរើសរាងចិញ្ចើមដែលសមនឹងខ្លួន។</span></div>
             </div>
           </div>
+          <div class="feedback-bottom">
+<a class="btn" href="#register">Inbox ដើម្បីទទួលការប្រឹក្សា</a>
+          </div>
           
-          <a class="btn" href="#register">Inbox ដើម្បីទទួលការប្រឹក្សា</a>
         </div>
       </div>
-<div class="wrap">
+<!-- <div class="wrap">
   <div class="proofCTA">
 
     <div class="proofCTAIcon">✦</div>
@@ -1665,7 +1838,7 @@ margin-top: 20px !important;
     </a>
 
   </div>
-</div>
+</div> -->
     </section>
 
 <section id="offer">
@@ -1773,9 +1946,7 @@ margin-top: 20px !important;
 
         <div class="khmer-video-content">
 
-          <span class="khmer-tag">
-            សម្រស់
-          </span>
+
 
           <h2>
             សម្រស់ដ៏ស្រស់ស្អាត
@@ -1788,11 +1959,14 @@ margin-top: 20px !important;
             ជាមួយនឹងវិធីថែទាំស្បែកដែលសមស្របសម្រាប់អ្នក
             ដើម្បីរក្សាស្បែកឱ្យមានសុខភាពល្អ និងស្រស់ស្អាតរាល់ថ្ងៃ។
           </p>
+<div class="feedback-bottom">
+          
 
-          <a href="#register" class="btn">
-            កក់កាលវិភាគទទួលសេវាកម្មថ្ងៃនេះ
-          </a>
-
+            <a href="#register" class="btn">
+              កក់កាលវិភាគទទួលសេវាកម្មថ្ងៃនេះ
+            </a>
+        </div>
+      
         </div>
 
 
